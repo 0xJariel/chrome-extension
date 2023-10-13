@@ -17,6 +17,7 @@ const refreshAccessToken = async (token) => {
       ...token,
       accessToken: refreshedToken.access_token,
       accessTokenExpires: Date.now() + refreshedToken.expires_in * 1000,
+      // in case previously revoked
       refreshToken: refreshedToken.refresh_token ?? token.refreshToken,
     };
   } catch (error) {
@@ -37,6 +38,7 @@ const authOptions = {
     }),
   ],
   secret: process.env.JWT_SECRET,
+
   callbacks: {
     async jwt({ token, account, user }) {
       if (account && user) {
