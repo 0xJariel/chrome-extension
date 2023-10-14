@@ -1,4 +1,5 @@
-import { NextAuthProvider } from "./Providers";
+import { NextAuthProvider } from "./NextAuthProviders";
+import RecoilContextProvider from "./RecoilContextProviders";
 import Navbar from "./components/Navbar";
 import "./globals.css";
 import { Inter } from "next/font/google";
@@ -15,10 +16,12 @@ export default function RootLayout({ children }) {
     <html lang="en" data-theme="light" style={{ backgroundColor: "#f3f3f3" }}>
       <body className={inter.className}>
         <NextAuthProvider>
-          <div className="">
-            <Navbar />
-            <main className="grid">{children}</main>
-          </div>
+          <RecoilContextProvider>
+            <div className="">
+              <Navbar />
+              <main className="grid">{children}</main>
+            </div>
+          </RecoilContextProvider>
         </NextAuthProvider>
       </body>
     </html>
