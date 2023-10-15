@@ -1,10 +1,6 @@
 "use client";
 
-import { RecoilRoot, atom } from "recoil";
-export const todoListState = atom({
-  key: "TodoList",
-  default: [],
-});
+import { RecoilRoot } from "recoil";
 
 export default function RecoilContextProvider({ children }) {
   return <RecoilRoot>{children}</RecoilRoot>;

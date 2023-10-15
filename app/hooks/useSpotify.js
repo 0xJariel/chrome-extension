@@ -13,11 +13,13 @@ const useSpotify = () => {
   useEffect(() => {
     if (session) {
       if (session.error === "RefreshAccessTokenError") {
+        console.log(session.error);
         signIn("spotify");
       }
 
       spotifyApi.setAccessToken(session.user.accessToken);
     }
+    console.log("new session");
   }, [session]);
 
   return spotifyApi;
