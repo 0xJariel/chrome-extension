@@ -11,15 +11,24 @@ const useSpotify = () => {
   });
 
   useEffect(() => {
-    if (session) {
-      if (session.error === "RefreshAccessTokenError") {
-        console.log(session.error);
-        signIn("spotify");
+    const updateSpotifyAccessToken = async () => {
+      try {
+        if (session) {
+          if (session.error === "RefreshAccessTokenError") {
+            console.log(session.error);
+            await signIn("spotify");
+          }
+          spotifyApi.setAccessToken(session.user.accessToken);
+          console.log("access token added");
+        }
+        console.log("new session");
+      } catch (error) {
+        // Handle errors here
+        console.error("Error updating Spotify access token:", error);
       }
+    };
 
-      spotifyApi.setAccessToken(session.user.accessToken);
-    }
-    console.log("new session");
+    updateSpotifyAccessToken();
   }, [session]);
 
   return spotifyApi;
