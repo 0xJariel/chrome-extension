@@ -14,7 +14,7 @@ export default function Home() {
       {!session?.user?.accessToken ? (
         "No Token"
       ) : (
-        <WebPlayback token={session?.user?.accessToken} />
+        <WebPlayback token={session.user.accessToken} />
       )}
     </div>
   );

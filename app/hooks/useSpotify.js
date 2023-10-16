@@ -19,9 +19,8 @@ const useSpotify = () => {
             await signIn("spotify");
           }
           spotifyApi.setAccessToken(session.user.accessToken);
-          console.log("access token added");
+          // console.log("new session & access token added");
         }
-        console.log("new session");
       } catch (error) {
         // Handle errors here
         console.error("Error updating Spotify access token:", error);
