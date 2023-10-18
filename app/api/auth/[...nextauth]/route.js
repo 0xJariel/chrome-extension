@@ -103,3 +103,18 @@ const authOptions = {
 const handler = nextAuth(authOptions);
 
 export { handler as GET, handler as POST };
+
+// export async function generateStaticParams() {
+//   const posts = await fetch("https://.../posts").then((res) => res.json());
+
+//   return posts.map((post) => ({
+//     slug: post.slug,
+//   }));
+// }
+
+// // Multiple versions of this page will be statically generated
+// // using the `params` returned by `generateStaticParams`
+// export default function Page({ params }) {
+//   const { slug } = params;
+//   // ...
+// }
